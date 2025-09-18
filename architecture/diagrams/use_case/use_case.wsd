@@ -1,0 +1,71 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor White
+  BorderColor #1f2937
+  ArrowColor #4b5563
+}
+skinparam ActorStyle awesome
+
+title Football Tournament Management System – Use Case Diagram
+
+actor "Coach" as Coach
+actor "Referee" as Referee
+actor "Admin" as Admin
+
+package "Tournament Management" {
+  (Create Tournament) as UC_CreateTournament
+  (Schedule Match) as UC_ScheduleMatch
+  (Assign Stadium) as UC_AssignStadium
+}
+
+package "Team Management" {
+  (Register Team) as UC_RegisterTeam
+  (Add Player) as UC_AddPlayer
+  (Add Coach) as UC_AddCoach
+  (Add Team Staff) as UC_AddStaff
+}
+
+package "Match Events" {
+  (Record Goal) as UC_RecordGoal
+  (Record Penalty) as UC_RecordPenalty
+}
+
+package "Security & Admin" {
+  (Login) as UC_Login
+  (Manage Roles) as UC_Roles
+  (Manage Users) as UC_Users
+}
+
+' Relaciones de actores
+Coach --> UC_RegisterTeam
+Coach --> UC_AddPlayer
+Coach --> UC_AddCoach
+Coach --> UC_AddStaff
+Coach --> UC_ScheduleMatch
+
+Referee --> UC_RecordGoal
+Referee --> UC_RecordPenalty
+
+Admin --> UC_Login
+Admin --> UC_Roles
+Admin --> UC_Users
+Admin --> UC_CreateTournament
+Admin --> UC_AssignStadium
+
+' Includes (reutilización)
+UC_RegisterTeam ..> UC_AddCoach : <<include>>
+UC_RegisterTeam ..> UC_AddPlayer : <<include>>
+UC_RegisterTeam ..> UC_AddStaff : <<include>>
+
+' Extends (comportamiento opcional/condicional)
+UC_ScheduleMatch ..> UC_AssignStadium : <<extend>>
+UC_RecordPenalty ..> UC_RecordGoal : <<extend>>
+
+legend right
+  == Leyenda ==
+  <<include>>: Reutiliza funcionalidad común
+  <<extend>>: Flujo opcional/condicional
+endlegend
+@enduml
