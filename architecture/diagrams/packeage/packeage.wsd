@@ -1,0 +1,29 @@
+@startuml
+title Football Tournament Management System – Package Diagram
+
+left to right direction
+
+package "Tournament Module" {
+  class Tournament
+  class Stadium
+  class Match
+  class Referee
+}
+
+package "Teams and Players Module" {
+  class Team
+  class Coach
+  class TeamStaff
+  class Player
+}
+
+package "Matches and Results Module" {
+  class Goal
+  class Penalty
+}
+
+"Tournament Module" --> "Teams and Players Module" : manages >
+"Teams and Players Module" --> "Matches and Results Module" : generates >
+"Tournament Module" --> "Matches and Results Module" : includes >
+
+@enduml
