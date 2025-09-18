@@ -1,0 +1,26 @@
+@startuml
+title Football Tournament – Sequence Diagram
+
+actor Coach
+participant "Tournament Module\n(Tournament)" as Tournament
+participant "Tournament Module\n(Match)" as Match
+participant "Teams and Players Module\n(Team)" as Team
+participant "Teams and Players Module\n(Player)" as Player
+participant "Matches and Results Module\n(Event)" as Event
+
+Coach -> Team : Register team
+Team -> Player : Add players
+Player --> Team : Players added
+
+Coach -> Tournament : Request tournament registration
+Tournament -> Team : Validate team details
+Team --> Tournament : Team confirmed
+Tournament --> Coach : Registration successful
+
+Tournament -> Match : Schedule matches
+Match --> Tournament : Match fixtures created
+
+Coach -> Event : Report match event (goal, penalty)
+Event --> Match : Event recorded
+
+@enduml
