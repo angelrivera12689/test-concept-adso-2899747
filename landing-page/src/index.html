@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Tournament Management System</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Football Tournament Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">Sobre el Proyecto</a></li>
+                <li><a href="#modules">Módulos y Entidades</a></li>
+                <li><a href="#diagrams">Diagramas</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="about">
+            <h2>Sobre el Proyecto</h2>
+            <div class="about-flex">
+                <div>
+                    <p>
+                        <strong>Football Tournament Management System</strong> es una plataforma integral para la gestión de torneos de fútbol, diseñada para cubrir necesidades tanto de ligas amateur como profesionales. Permite administrar equipos, jugadores, partidos, árbitros y estadísticas, todo de manera eficiente y segura.
+                    </p>
+                    <ul>
+                        <li><strong>Escalable:</strong> Fácil de ampliar con nuevas funcionalidades.</li>
+                        <li><strong>Modular:</strong> Separación clara por módulos.</li>
+                        <li><strong>Auditoría:</strong> Campos para rastrear cambios y acciones.</li>
+                        <li><strong>Consistencia:</strong> Estructura estandarizada y trazable.</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="assets/img/class.png" alt="Diagrama de Clases" class="about-img"/>
+                </div>
+            </div>
+        </section>
+        
+        <section id="modules">
+            <h2>Módulos y Entidades</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h3>1. Torneos</h3>
+                    <ul>
+                        <li><strong>tournament</strong>: id, code, name, start_date, end_date, auditoría</li>
+                        <li><strong>stadium</strong>: id, name, location, capacity, auditoría</li>
+                    </ul>
+                </div>
+                <div class="module-card">
+                    <h3>2. Equipos y Jugadores</h3>
+                    <ul>
+                        <li><strong>team</strong>: id, name, tournament_id, coach_id, auditoría</li>
+                        <li><strong>player</strong>: id, name, jersey_number, position, team_id, auditoría</li>
+                        <li><strong>coach</strong>: id, name, auditoría</li>
+                        <li><strong>team_staff</strong>: id, name, role, team_id, auditoría</li>
+                    </ul>
+                </div>
+                <div class="module-card">
+                    <h3>3. Partidos y Resultados</h3>
+                    <ul>
+                        <li><strong>match</strong>: id, tournament_id, home_team_id, away_team_id, stadium_id, referee_id, date, auditoría</li>
+                        <li><strong>goal</strong>: id, match_id, player_id, minute, goal_type, auditoría</li>
+                        <li><strong>penalty</strong>: id, match_id, player_id, penalty_type, minute, reason, auditoría</li>
+                        <li><strong>referee</strong>: id, name, auditoría</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="diagrams">
+            <h2>Diagramas del Proyecto</h2>
+            <p>Haz clic en cada imagen para verla en grande.</p>
+            <div class="diagrams-gallery">
+                <div>
+                    <h4>Diagrama de Clases</h4>
+                    <img src="assets/img/class.png" alt="Diagrama de Clases" />
+                </div>
+                <div>
+                    <h4>Diagrama de Despliegue</h4>
+                    <img src="assets/img/deploy.png" alt="Diagrama de Despliegue" />
+                </div>
+                <div>
+                    <h4>Diagrama de Paquetes</h4>
+                    <img src="assets/img/packeage.png" alt="Diagrama de Paquetes" />
+                </div>
+                <div>
+                    <h4>Diagrama de Secuencia</h4>
+                    <img src="assets/img/secuence.png" alt="Diagrama de Secuencia" />
+                </div>
+                <div>
+                    <h4>Diagrama de Casos de Uso</h4>
+                    <img src="assets/img/use_case.png" alt="Diagrama de Casos de Uso" />
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <h2>Contacto</h2>
+        <p>¿Tienes preguntas o sugerencias? ¡Contáctanos!</p>
+        <p>Email: <a href="mailto:info@futboltournament.com">info@futboltournament.com</a></p>
+        <p>&copy; 2025 Football Tournament Management System</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/gallery.js"></script>
+</body>
+</html>
