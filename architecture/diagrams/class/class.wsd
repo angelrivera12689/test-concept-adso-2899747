@@ -1,0 +1,104 @@
+@startuml
+title Football Tournament Management System – Class Diagram (IDs only)
+
+left to right direction
+
+' Entidades principales al centro
+class tournament {
+  + id
+  + code
+  + name
+  + start_date
+  + end_date
+}
+
+class stadium {
+  + id
+  + name
+  + location
+  + capacity
+}
+
+class match {
+  + id
+  + tournament_id
+  + home_team_id
+  + away_team_id
+  + stadium_id
+  + referee_id
+  + date
+}
+
+class team {
+  + id
+  + name
+  + tournament_id
+  + coach_id
+}
+
+class player {
+  + id
+  + name
+  + jersey_number
+  + position
+  + team_id
+}
+
+class goal {
+  + id
+  + match_id
+  + player_id
+  + minute
+  + goal_type
+}
+
+class penalty {
+  + id
+  + match_id
+  + player_id
+  + penalty_type
+  + minute
+  + reason
+}
+
+class coach {
+  + id
+  + name
+}
+
+class team_staff {
+  + id
+  + name
+  + role
+  + team_id
+}
+
+class referee {
+  + id
+  + name
+}
+
+
+tournament "1" *-- "many" team
+tournament "1" *-- "many" match
+
+stadium "1" *-- "many" match
+
+referee "1" *-- "many" match
+
+coach "1" *-- "many" team
+
+team "1" *-- "many" player
+team "1" *-- "many" team_staff
+
+match "1" *-- "many" goal
+match "1" *-- "many" penalty
+
+player "1" *-- "many" goal
+player "1" *-- "many" penalty
+
+' Relaciones de asociación para equipos en partidos (no compositivas)
+match "1" --> "1" team : home_team
+match "1" --> "1" team : away_team
+
+@enduml
